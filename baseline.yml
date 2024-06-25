@@ -1,0 +1,41 @@
+manufacturers:
+  - name: Cisco
+  - name: Juniper
+  - name: HP
+  - name: Meraki
+  - nnn: lkasfd
+device_types:
+  - model: "5585x-10"
+    manufacturer: cisco
+  - model: "4507"
+    manufacturer: cisco
+  - model: generic
+    manufacturer: hp
+  - model: big router
+    manufacturer: meraki
+    u_height: 4
+device_roles:
+  - name: firewall
+  - name: router
+  - name: switch
+  - name: ap
+  - ajdfj: aldsfkj
+sites:
+  - name: atl
+    racks:
+      - name: ATL-R1
+      - name: ATL-R2
+        u_height: 99
+  - name: nyc
+    racks:
+      - name: NYC-R1
+      - name: NYC-R2
+  - name: Chi
+    racks:
+      - name: CHI-R1
+      - name: CHI-R2
+        u_height: 24
+  - name: den
+    racks:
+      - name: DEN-R1
+        u_height: 60
