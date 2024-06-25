@@ -7,13 +7,18 @@ manufacturers:
 device_types:
   - model: "5585x-10"
     manufacturer: cisco
+    u_height: 4
   - model: "4507"
     manufacturer: cisco
+    u_height: 8
   - model: generic
     manufacturer: hp
-  - model: big router
+  - model: big_router
     manufacturer: meraki
     u_height: 4
+  - model: core_switch
+    manufacturer: HP
+    u_height: 6
 device_roles:
   - name: firewall
   - name: router
@@ -21,6 +26,8 @@ device_roles:
   - name: ap
   - ajdfj: aldsfkj
 sites:
+  - racks:
+      - name: DUMMYRACK1
   - name: atl
     description: Atlanta
     physical_address: "123 Main Street, Atlanta, GA 30308"
@@ -28,19 +35,53 @@ sites:
       - name: ATL-R1
       - name: ATL-R2
         u_height: 99
+    devices:
+      - name: ATL-FRWL01
+        role: firewall
+        device_type: "5585x-10"
+        rack:
+          name: ATL-R1
+          position: 14
+      - name: ATL-CRSW01
+        role: switch
+        device_type: core_switch
   - name: nyc
     racks:
       - name: NYC-R1
       - name: NYC-R2
+    devices:
+      - name: NYC-FRWL01
+        role: firewall
+        device_type: "5585x-10"
+        rack:
+          name: NYC-R1
+          position: 22
+      - name: NYC-CRSW01
+        role: switch
+        device_type: "4507"
   - name: Chi
     racks:
       - name: CHI-R1
       - name: CHI-R2
         u_height: 24
+    devices:
+      - name: CHI-FRWL01
+        role: firewall
+        device_type: "5585x-10"
+        rack:
+          name: CHI-R2
+          position: 8
   - name: den
     racks:
       - name: DEN-R1
         u_height: 60
+    devices:
+      - name: DEN-FRWL01
+        role: firewall
+        device_type: "5585x-10"
+        rack:
+          name: LKJSDF
+          position: 984994
   - name: cha
     description: Chattanooga
     physical_address: "123 Main Street, Chattanooga, TN 37404"
