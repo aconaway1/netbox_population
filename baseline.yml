@@ -22,6 +22,8 @@ device_roles:
   - ajdfj: aldsfkj
 sites:
   - name: atl
+    description: Atlanta
+    physical_address: "123 Main Street, Atlanta, GA 30308"
     racks:
       - name: ATL-R1
       - name: ATL-R2
@@ -39,3 +41,6 @@ sites:
     racks:
       - name: DEN-R1
         u_height: 60
+  - name: cha
+    description: Chattanooga
+    physical_address: "123 Main Street, Chattanooga, TN 37404"

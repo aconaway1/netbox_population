@@ -108,6 +108,10 @@ if __name__ == "__main__":
         else:
             site_slug = site['name'].lower()
             constructed_site = {"name": site_name, "slug": site_slug, "status": "active"}
+            if site.get('physical_address'):
+                constructed_site['physical_address'] = site['physical_address']
+            if site.get('description'):
+                constructed_site['description'] = site['description']
             working_site = nb_conn.dcim.sites.create(constructed_site)
 
         if site.get('racks'):
