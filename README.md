@@ -3,17 +3,7 @@ Some scripts to populate Netbox. This is a separate project from the other 84829
 
 # Prerequisites
 
-```
-% .venv/bin/pip freeze
-certifi==2024.2.2
-charset-normalizer==3.3.2
-idna==3.7
-packaging==23.2
-pynetbox==7.3.3
-PyYAML==6.0.1
-requests==2.32.3
-urllib3==2.2.1
-```
+See [`requirements.txt`](https://github.com/aconaway1/netbox_population/blob/main/requirements.txt) for required Python packages.
 
 You need to generate a file called `creds.yml` and put it in the root of the repo. This will contain the Netbox host 
 info and the token used to access it. The contents should look like this.
