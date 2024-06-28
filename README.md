@@ -48,6 +48,8 @@ please. :)
 # Usage
 
 ## Loading the baseline
-`% .venv/bin/python populate_baseline.py`
+`% python populate_baseline.py`
 
 This will load in all baseline info from `baseline.yml` and shove it into Netbox using the creds given.
+
+Run this in a [virtual environment](https://docs.python.org/3/library/venv.html) of some kind to help avoid Python package traps.

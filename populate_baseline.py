@@ -1,3 +1,6 @@
+'''
+Populate a Netbox instance with date from a YAML file.
+'''
 import yaml
 import pynetbox
 
@@ -5,13 +8,17 @@ CREDS_FILE = "creds.yml"
 BASELINE_FILE = "baseline.yml"
 
 def load_creds(creds_file):
-
-    with open(creds_file) as file:
+    '''
+    Load the creds from file
+    '''
+    with open(creds_file, encoding="UTF8") as file:
         return yaml.safe_load(file)
 
 def load_baseline(baseline_file):
-
-    with open(baseline_file) as file:
+    '''
+    Load the baseline info from YAML
+    '''
+    with open(baseline_file, encoding="UTF8") as file:
         return yaml.safe_load(file)
 
 
@@ -79,7 +86,8 @@ if __name__ == "__main__":
             print(f"The device type {dev_type['model'].upper()} already exists. Skipping.")
             continue
 
-        constructed_dev_type = {"model": dev_type_model, "slug": dev_type_slug, "manufacturer": queried_man.id}
+        constructed_dev_type = {"model": dev_type_model, "slug": dev_type_slug,
+                                "manufacturer": queried_man.id}
         if dev_type.get("u_height"):
             constructed_dev_type['u_height'] = dev_type['u_height']
 
@@ -111,7 +119,8 @@ if __name__ == "__main__":
                 rack_name = rack['name'].upper()
                 working_rack = nb_conn.dcim.racks.get(name=rack['name'])
                 if not working_rack:
-                    constructed_rack = {"name": rack_name, "site": working_site.id, "status": "active"}
+                    constructed_rack = {"name": rack_name, "site": working_site.id,
+                                        "status": "active"}
                     if rack.get('u_height'):
                         constructed_rack['u_height'] = rack['u_height']
                     working_rack = nb_conn.dcim.racks.create(constructed_rack)
@@ -124,14 +133,16 @@ if __name__ == "__main__":
                 constructed_device = {"name": device_name, "site": working_site.id, }
                 if not working_device:
                     # Get the device type ID
-                    queried_dev_type = nb_conn.dcim.device_types.get(slug=device['device_type'].lower())
+                    queried_dev_type = nb_conn.dcim.device_types.get(
+                        slug=device['device_type'].lower())
                     if not queried_dev_type:
                         print(f"Device type not found: {device}")
                         continue
                     constructed_device['device_type'] = queried_dev_type.id
                     print(f"{constructed_device=}")
                     # Get the role ID
-                    queried_dev_role = nb_conn.dcim.device_roles.get(name=device['role'].upper())
+                    queried_dev_role = nb_conn.dcim.device_roles.get(
+                        name=device['role'].upper())
                     if not queried_dev_role:
                         print(f"Device role not found: {device}")
                         continue
@@ -143,8 +154,8 @@ if __name__ == "__main__":
                         queried_rack = nb_conn.dcim.racks.get(name=device['rack']['name'].upper())
                         if queried_rack:
                             if device['rack']['position'] > queried_rack.u_height:
-                                print(
-                                    f"The rack position {device['rack']['position']} is not right for {device['rack']}.")
+                                print(f"The rack position {device['rack']['position']} "
+                                      f"is not right for {device['rack']}.")
                             else:
                                 constructed_device['rack'] = queried_rack.id
                                 constructed_device['position'] = device['rack']['position']

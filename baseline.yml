@@ -28,6 +28,11 @@ device_roles:
 sites:
   - racks:
       - name: DUMMYRACK1
+  - name: CLT
+    description: Charlotte
+    racks:
+      - name: CLT-R1
+      - name: CLT-R2
   - name: atl
     description: Atlanta
     physical_address: "123 Main Street, Atlanta, GA 30308"
